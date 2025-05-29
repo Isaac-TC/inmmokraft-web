@@ -1,0 +1,49 @@
+/* frontend/css/styles.css */
+
+/* Colores corporativos oscuros y sobrios */
+body {
+  background-color: #1a2b4c; /* Azul oscuro elegante */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 1s ease-in-out;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #f4f6f8; /* Fondo claro de la tarjeta */
+  animation: slideDown 0.8s ease-out;
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo a los input */
+input.form-control {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+button.btn-primary {
+  background-color: #005baa; /* Azul más fuerte */
+  border-color: #005baa;
+}
+
+button.btn-primary:hover {
+  background-color: #003e7e;
+  border-color: #003e7e;
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

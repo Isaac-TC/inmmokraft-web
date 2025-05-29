@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubicación - Inmmokraft</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+  <!-- BARRA SUPERIOR -->
+  <header class="bg-[#156091] shadow-md py-4 px-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <img src="img/logo.png" alt="Logo Inmmokraft" class="w-12 h-12 rounded-full object-cover border border-white">
+      <div>
+        <h1 class="text-xl font-bold text-white">Consorcio Inmmokraft Cia. Ltda.</h1>
+        <p class="text-sm text-white">Tu espacio ideal, a tu alcance</p>
+      </div>
+    </div>
+    <nav class="space-x-6 text-white font-semibold">
+      <a href="home.html" class="hover:underline">Home</a>
+      
+    </nav>
+  </header>
+
+  <main class="p-6">
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="my-12">
+      <h2 class="text-2xl font-bold text-center text-[#156091] mb-4">¿Dónde nos encontramos?</h2>
+      <p class="text-center mb-6">Puedes encontrarnos fácilmente en nuestra oficina principal o seguir las indicaciones para llegar.</p>
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+        <!-- Mapa -->
+        <iframe class="w-full lg:w-2/3 h-96 rounded shadow-md border" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.7366503123718!2d-78.47624311005277!3d-0.18065359956926562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a15bcd2b1cf%3A0xc5d8f0e1b5efb264!2sQuito%2C%20Ecuador!5e0!3m2!1ses-419!2sec!4v1685488900000!5m2!1ses-419!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <!-- Instrucciones -->
+        <div class="text-center lg:text-left">
+          <h3 class="text-xl font-semibold mb-2">Cómo llegar</h3>
+          <ul class="list-disc pl-6 text-gray-700">
+            <li>Ubicados en el corazón de Quito.</li>
+            <li>Frente al parque La Carolina, edificio Inmmokraft, piso 3.</li>
+            <li>Fácil acceso en bus o taxi.</li>
+            <li>Estacionamiento disponible para clientes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer id="contacto" class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
+      <p class="text-gray-600">© 2025 Inmobiliaria Inmmokraft.cia.ltda. Todos los derechos reservados.</p>
+     
+    </footer>
+
+     <!-- BOTÓN FLOTANTE DE WHATSAPP  -->
+   <a href="https://wa.me/593969059135"
+   class="fixed bottom-5 right-5 hover:bg-green-600 w-14 h-14 flex items-center justify-center rounded-full shadow-lg z-50"
+   target="_blank" aria-label="WhatsApp">
+  <img src="img/whatsapp_2504957.png" alt="WhatsApp" class="w-8 h-8">
+</a>
+  </main>
+</body>
+</html>

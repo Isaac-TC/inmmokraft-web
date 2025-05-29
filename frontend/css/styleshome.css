@@ -1,0 +1,18 @@
+/* Animación del carrusel */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-slide {
+  width: 300%;
+  display: flex;
+  animation: slide 12s infinite;
+}
+
+/* Desplazamiento suave */
+html {
+  scroll-behavior: smooth;
+}

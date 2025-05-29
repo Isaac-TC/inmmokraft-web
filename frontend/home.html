@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inmobiliaria Inmmokraft</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+  <!-- BARRA SUPERIOR -->
+  <header class="bg-[#156091] shadow-md py-4 px-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <img src="img/logo.png" alt="Logo Inmmokraft" class="w-12 h-12 rounded-full object-cover border border-white">
+      <div>
+        <h1 class="text-xl font-bold text-white">Consorcio Inmmokraft Cia. Ltda.</h1>
+        <p class="text-sm text-white">Tu espacio ideal, a tu alcance</p>
+      </div>
+    </div>
+    <nav class="space-x-6 text-white font-semibold">
+      <a href="index.html" class="hover:underline">Inicio</a>
+      <a href="#destacadas" class="hover:underline">Propiedades</a>
+      <a href="contactos.html" class="hover:underline">Contacto</a>
+      <a href="login.html" class="hover:underline">Iniciar sesión</a>
+    </nav>
+  </header>
+
+  <!-- PROPIEDADES DESTACADAS -->
+  <main class="p-6">
+    <section id="destacadas" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="img/img1.jpg" alt="Casa" class="w-full h-48 object-cover">
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="img/img2.jpg" alt="Interior" class="w-full h-48 object-cover">
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="img/img3.jpg" alt="Propiedad" class="w-full h-48 object-cover">
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="img/img4.jpg" alt="Nueva Propiedad 1" class="w-full h-48 object-cover">
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="img/img5.jpg" alt="Nueva Propiedad 2" class="w-full h-48 object-cover">
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="img/img6.jpg" alt="Nueva Propiedad 3" class="w-full h-48 object-cover">
+      </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer id="contacto" class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
+      <p class="text-gray-600">© 2025 Inmobiliaria Inmmokraft.cia.ltda. Todos los derechos reservados.</p>
+      <div class="mt-2 space-x-3 text-xl">
+        <a href="https://facebook.com" class="text-blue-600 hover:text-blue-800"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP  -->
+   <a href="https://wa.me/593969059135"
+   class="fixed bottom-5 right-5 hover:bg-green-600 w-14 h-14 flex items-center justify-center rounded-full shadow-lg z-50"
+   target="_blank" aria-label="WhatsApp">
+  <img src="img/whatsapp_2504957.png" alt="WhatsApp" class="w-8 h-8">
+</a>
+
+  </main>
+</body>
+</html>
