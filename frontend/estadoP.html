@@ -1,49 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Registrar Propiedad</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Estado de Propiedades</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="icon" type="image/png" href="img/logo.png">
 </head>
-<body class="bg-light">
 
-  <div class="container my-5">
-    <div class="card shadow p-4">
-      <h2 class="mb-4 text-center">Formulario de Registro de Propiedad</h2>
+<body class="bg-gray-100 p-6">
+   <div class="group flex min-h-screen w-full">
+    <!-- BARRA LATERAL -->
+    <aside class="fixed top-0 left-0 h-screen bg-white shadow-md w-16 group-hover:w-64 transition-all duration-300 z-10 overflow-hidden">
+      <div class="p-4">
+        <nav class="mt-6">
+          <ul class="space-y-4">
+            <li><a href="home.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-building"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Home</span></a></li>
+            <li><a href="registroP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-sign-in-alt"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Registro</span></a></li>
+            <li><a href="estadoP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-home"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Estado</span></a></li>
+            <li><a href="documentos.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-home"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Documentos</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
 
-      <form>
-        <!-- Código de propiedad -->
-        <div class="mb-3">
-          <label for="codigo" class="form-label">Código de Propiedad</label>
-          <input type="text" class="form-control" id="codigo" placeholder="Ej: PROP-001" required>
-        </div>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="ml-16 group-hover:ml-64 transition-all duration-300 w-full min-h-screen overflow-y-auto">
+      <!-- BARRA SUPERIOR -->
+      <section style="background-color: #156091;" class="text-white px-6 py-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+        <img src="img/logo.png" alt="Logo Inmmokraft" class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover" />
+        <div><h2 class="text-2xl font-bold">Consorcio Inmmokraft<br class="sm:hidden"> Cia. Ltda.</h2></div>
+      </section>
+  <h1 class="text-3xl font-bold mb-4">Propiedades Registradas</h1>
 
-        <!-- Tipo de operación -->
-        <div class="mb-3">
-          <label for="tipoOperacion" class="form-label">Tipo de Operación</label>
-          <select class="form-select" id="tipoOperacion" required>
-            <option value="">Seleccionar</option>
+  <table class="min-w-full bg-white border border-gray-300 rounded-md shadow-md">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="py-2 px-4 border">Código</th>
+        <th class="py-2 px-4 border">Operación</th>
+        <th class="py-2 px-4 border">Dirección</th>
+        <th class="py-2 px-4 border">Vendedor</th>
+        <th class="py-2 px-4 border">Comprador</th>
+        <th class="py-2 px-4 border">Agente</th>
+        <th class="py-2 px-4 border">Estado</th>
+        <th class="py-2 px-4 border">Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-propiedades" class="text-sm">
+      <!-- Las propiedades se insertan aquí con JS -->
+    </tbody>
+  </table>
+
+  <!-- MODAL DE EDICIÓN -->
+  <div id="modal-editar" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl relative">
+      <h2 class="text-xl font-bold mb-4">Editar Propiedad</h2>
+      <form id="form-editar" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="hidden" id="editar-codigo" />
+
+        <div>
+          <label>Tipo de Operación</label>
+          <select id="editar-operacion" class="w-full border rounded px-2 py-1">
             <option value="Venta">Venta</option>
             <option value="Alquiler">Alquiler</option>
           </select>
         </div>
 
-        <!-- Dirección -->
-        <div class="mb-3">
-          <label for="direccion" class="form-label">Dirección</label>
-          <input type="text" class="form-control" id="direccion" placeholder="Ej: Av. Siempre Viva 742" required>
+        <div>
+          <label>Dirección</label>
+          <input type="text" id="editar-direccion" class="w-full border rounded px-2 py-1" />
         </div>
 
-        <!-- Cliente vendedor -->
-        <div class="mb-3">
-          <label for="vendedor" class="form-label">Cliente Vendedor</label>
-          <input type="text" class="form-control" id="vendedor" required>
+        <div>
+          <label>Vendedor</label>
+          <input type="text" id="editar-vendedor" class="w-full border rounded px-2 py-1" />
         </div>
 
-        <!-- Cliente comprador -->
-        <div class="mb-3">
-          <label for="comprador" class="form-label">Cliente Comprador</label>
-          <input type="text" class="form-control" id="comprador">
+        <div>
+          <label>Comprador</label>
+          <input type="text" id="editar-comprador" class="w-full border rounded px-2 py-1" />
         </div>
 
+        <div>
+          <label>Agente</label>
+          <input type="text" id="editar-agente" class="w-full border rounded px-2 py-1" />
+        </div>
+
+        <div>
+          <label>Estado</label>
+          <select id="editar-estado" class="w-full border rounded px-2 py-1">
+            <option value="Pendiente">Pendiente</option>
+            <option value="En trámite">En trámite</option>
+            <option value="Finalizado">Finalizado</option>
+          </select>
+        </div>
+
+        <div class="md:col-span-2 text-right space-x-4 mt-4">
+          <button type="button" onclick="cerrarModal()" class="px-4 py-2 bg-gray-500 text-white rounded">Cancelar</button>
+          <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    // Cargar propiedades
+    fetch("http://localhost:3000/api/propiedades")
+      .then(res => res.json())
+      .then(data => {
+        const tabla = document.getElementById("tabla-propiedades");
+        data.forEach(prop => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
+            <td class="border px-2 py-1">${prop.codigo}</td>
+            <td class="border px-2 py-1">${prop.tipo_operacion}</td>
+            <td class="border px-2 py-1">${prop.direccion}</td>
+            <td class="border px-2 py-1">${prop.vendedor}</td>
+            <td class="border px-2 py-1">${prop.comprador}</td>
+            <td class="border px-2 py-1">${prop.agente}</td>
+            <td class="border px-2 py-1">${prop.estado}</td>
+            <td class="border px-2 py-1 space-x-2">
+              <button onclick="editarPropiedad('${prop.codigo}')" class="bg-yellow-400 hover:bg-yellow-500 text-white px-2 py-1 rounded">Editar</button>
+              <button onclick="eliminarPropiedad('${prop.codigo}')" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">Eliminar</button>
+            </td>
+          `;
+          tabla.appendChild(fila);
+        });
+      });
+
+    // Eliminar propiedad
+    function eliminarPropiedad(codigo) {
+      if (!confirm("¿Estás seguro de eliminar esta propiedad?")) return;
+      fetch(`http://localhost:3000/api/propiedades/${codigo}`, {
+        method: "DELETE"
+      })
+      .then(res => res.text())
+      .then(msg => {
+        alert(msg);
+        location.reload(); // Recargar tabla
+      })
+      .catch(err => alert("Error al eliminar"));
+    }
+
+    // Mostrar modal con datos
+    function editarPropiedad(codigo) {
+      fetch(`http://localhost:3000/api/propiedades/${codigo}`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("editar-codigo").value = data.codigo;
+          document.getElementById("editar-operacion").value = data.tipo_operacion;
+          document.getElementById("editar-direccion").value = data.direccion;
+          document.getElementById("editar-vendedor").value = data.vendedor;
+          document.getElementById("editar-comprador").value = data.comprador;
+          document.getElementById("editar-agente").value = data.agente;
+          document.getElementById("editar-estado").value = data.estado;
+
+          document.getElementById("modal-editar").classList.remove("hidden");
+        })
+        .catch(err => {
+          console.error("❌ Error al cargar propiedad:", err);
+          alert("No se pudo cargar la propiedad para edición.");
+        });
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal-editar").classList.add("hidden");
+    }
+
+    // Guardar cambios del modal
+    document.getElementById("form-editar").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const codigo = document.getElementById("editar-codigo").value;
+      const datosActualizados = {
+        tipoOperacion: document.getElementById("editar-operacion").value,
+        direccion: document.getElementById("editar-direccion").value,
+        vendedor: document.getElementById("editar-vendedor").value,
+        comprador: document.getElementById("editar-comprador").value,
+        agente: document.getElementById("editar-agente").value,
+        estado: document.getElementById("editar-estado").value
+      };
+
+      fetch(`http://localhost:3000/api/propiedades/${codigo}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datosActualizados)
+      })
+        .then(res => res.text())
+        .then(msg => {
+          alert(msg);
+          cerrarModal();
+          location.reload();
+        })
+        .catch(err => {
+          console.error("❌ Error al actualizar propiedad:", err);
+          alert("Error al actualizar");
+        });
+    });
+  </script>
+</body>
+</html>

@@ -25,6 +25,7 @@
             <li><a href="home.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-building"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Home</span></a></li>
             <li><a href="registroP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-sign-in-alt"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Registro</span></a></li>
             <li><a href="estadoP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-home"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Estado</span></a></li>
+            <li><a href="documentos.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-home"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Documentos</span></a></li>
           </ul>
         </nav>
       </div>
@@ -44,10 +45,7 @@
           <h2 class="titulo-formulario">Registrar Nueva Propiedad</h2>
 
           <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="codigo">Código de Propiedad</label>
-              <input type="text" id="codigo" placeholder="Ej: PROP-001" required>
-            </div>
+            
 
             <div>
               <label for="tipoOperacion">Tipo de Operación</label>
@@ -106,7 +104,7 @@ document.querySelector("form").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const datos = {
-    codigo: document.getElementById("codigo").value,
+    
     tipoOperacion: document.getElementById("tipoOperacion").value,
     direccion: document.getElementById("direccion").value,
     vendedor: document.getElementById("vendedor").value,
