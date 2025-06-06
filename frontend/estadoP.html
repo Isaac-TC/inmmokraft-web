@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <title>Estado de Propiedades</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-   <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="stylesheet" href="css/stylesFormulario.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+  </style>
 </head>
+<body class="bg-gray-100 h-full">
+  <div class="flex group">
 
-<body class="bg-gray-100 p-6">
-   <div class="group flex min-h-screen w-full">
     <!-- BARRA LATERAL -->
     <aside class="fixed top-0 left-0 h-screen bg-white shadow-md w-16 group-hover:w-64 transition-all duration-300 z-10 overflow-hidden">
       <div class="p-4">
@@ -17,7 +26,7 @@
             <li><a href="home.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-building"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Home</span></a></li>
             <li><a href="registroP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-sign-in-alt"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Registro</span></a></li>
             <li><a href="estadoP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-home"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Estado</span></a></li>
-            <li><a href="documentos.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-home"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Documentos</span></a></li>
+            <li><a href="documentos.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700"><i class="fas fa-file-alt"></i><span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Documentos</span></a></li>
           </ul>
         </nav>
       </div>
@@ -30,81 +39,32 @@
         <img src="img/logo.png" alt="Logo Inmmokraft" class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover" />
         <div><h2 class="text-2xl font-bold">Consorcio Inmmokraft<br class="sm:hidden"> Cia. Ltda.</h2></div>
       </section>
-  <h1 class="text-3xl font-bold mb-4">Propiedades Registradas</h1>
 
-  <table class="min-w-full bg-white border border-gray-300 rounded-md shadow-md">
-    <thead class="bg-gray-200">
-      <tr>
-        <th class="py-2 px-4 border">Código</th>
-        <th class="py-2 px-4 border">Operación</th>
-        <th class="py-2 px-4 border">Dirección</th>
-        <th class="py-2 px-4 border">Vendedor</th>
-        <th class="py-2 px-4 border">Comprador</th>
-        <th class="py-2 px-4 border">Agente</th>
-        <th class="py-2 px-4 border">Estado</th>
-        <th class="py-2 px-4 border">Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tabla-propiedades" class="text-sm">
-      <!-- Las propiedades se insertan aquí con JS -->
-    </tbody>
-  </table>
+      <div class="p-6">
+        <h1 class="text-3xl font-bold mb-4">Propiedades Registradas</h1>
 
-  <!-- MODAL DE EDICIÓN -->
-  <div id="modal-editar" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl relative">
-      <h2 class="text-xl font-bold mb-4">Editar Propiedad</h2>
-      <form id="form-editar" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="hidden" id="editar-codigo" />
-
-        <div>
-          <label>Tipo de Operación</label>
-          <select id="editar-operacion" class="w-full border rounded px-2 py-1">
-            <option value="Venta">Venta</option>
-            <option value="Alquiler">Alquiler</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Dirección</label>
-          <input type="text" id="editar-direccion" class="w-full border rounded px-2 py-1" />
-        </div>
-
-        <div>
-          <label>Vendedor</label>
-          <input type="text" id="editar-vendedor" class="w-full border rounded px-2 py-1" />
-        </div>
-
-        <div>
-          <label>Comprador</label>
-          <input type="text" id="editar-comprador" class="w-full border rounded px-2 py-1" />
-        </div>
-
-        <div>
-          <label>Agente</label>
-          <input type="text" id="editar-agente" class="w-full border rounded px-2 py-1" />
-        </div>
-
-        <div>
-          <label>Estado</label>
-          <select id="editar-estado" class="w-full border rounded px-2 py-1">
-            <option value="Pendiente">Pendiente</option>
-            <option value="En trámite">En trámite</option>
-            <option value="Finalizado">Finalizado</option>
-          </select>
-        </div>
-
-        <div class="md:col-span-2 text-right space-x-4 mt-4">
-          <button type="button" onclick="cerrarModal()" class="px-4 py-2 bg-gray-500 text-white rounded">Cancelar</button>
-          <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Guardar Cambios</button>
-        </div>
-      </form>
-    </div>
+        <table class="min-w-full bg-white border border-gray-300 rounded-md shadow-md">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="py-2 px-4 border">Código</th>
+              <th class="py-2 px-4 border">Operación</th>
+              <th class="py-2 px-4 border">Dirección</th>
+              <th class="py-2 px-4 border">Vendedor</th>
+              <th class="py-2 px-4 border">Comprador</th>
+              <th class="py-2 px-4 border">Agente</th>
+              <th class="py-2 px-4 border">Estado</th>
+              <th class="py-2 px-4 border">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-propiedades" class="text-sm">
+            <!-- Datos desde JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
   </div>
 
-  <!-- SCRIPT -->
   <script>
-    // Cargar propiedades
     fetch("http://localhost:3000/api/propiedades")
       .then(res => res.json())
       .then(data => {
@@ -128,75 +88,18 @@
         });
       });
 
-    // Eliminar propiedad
     function eliminarPropiedad(codigo) {
       if (!confirm("¿Estás seguro de eliminar esta propiedad?")) return;
       fetch(`http://localhost:3000/api/propiedades/${codigo}`, {
         method: "DELETE"
       })
-      .then(res => res.text())
-      .then(msg => {
-        alert(msg);
-        location.reload(); // Recargar tabla
-      })
-      .catch(err => alert("Error al eliminar"));
-    }
-
-    // Mostrar modal con datos
-    function editarPropiedad(codigo) {
-      fetch(`http://localhost:3000/api/propiedades/${codigo}`)
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("editar-codigo").value = data.codigo;
-          document.getElementById("editar-operacion").value = data.tipo_operacion;
-          document.getElementById("editar-direccion").value = data.direccion;
-          document.getElementById("editar-vendedor").value = data.vendedor;
-          document.getElementById("editar-comprador").value = data.comprador;
-          document.getElementById("editar-agente").value = data.agente;
-          document.getElementById("editar-estado").value = data.estado;
-
-          document.getElementById("modal-editar").classList.remove("hidden");
-        })
-        .catch(err => {
-          console.error("❌ Error al cargar propiedad:", err);
-          alert("No se pudo cargar la propiedad para edición.");
-        });
-    }
-
-    function cerrarModal() {
-      document.getElementById("modal-editar").classList.add("hidden");
-    }
-
-    // Guardar cambios del modal
-    document.getElementById("form-editar").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const codigo = document.getElementById("editar-codigo").value;
-      const datosActualizados = {
-        tipoOperacion: document.getElementById("editar-operacion").value,
-        direccion: document.getElementById("editar-direccion").value,
-        vendedor: document.getElementById("editar-vendedor").value,
-        comprador: document.getElementById("editar-comprador").value,
-        agente: document.getElementById("editar-agente").value,
-        estado: document.getElementById("editar-estado").value
-      };
-
-      fetch(`http://localhost:3000/api/propiedades/${codigo}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datosActualizados)
-      })
         .then(res => res.text())
         .then(msg => {
           alert(msg);
-          cerrarModal();
           location.reload();
         })
-        .catch(err => {
-          console.error("❌ Error al actualizar propiedad:", err);
-          alert("Error al actualizar");
-        });
-    });
+        .catch(err => alert("Error al eliminar"));
+    }
   </script>
 </body>
 </html>

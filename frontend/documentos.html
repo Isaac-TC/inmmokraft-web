@@ -1,32 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Control Documental Inmobiliario</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <title>Verificar Estado de Proceso</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/stylesFormulario.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+  </style>
 </head>
-<body>
-  <h1>📋 Control Documental de Trámites</h1>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Documento</th>
-        <th>Completado</th>
-        <th>Días Estimados</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>Escritura</td><td><input type="checkbox"></td><td>3</td></tr>
-      <tr><td>2</td><td>Certificado de gravámenes</td><td><input type="checkbox"></td><td>2</td></tr>
-      <tr><td>3</td><td>Pago de impuestos</td><td><input type="checkbox"></td><td>1</td></tr>
-      <tr><td>4</td><td>Ficha catastral</td><td><input type="checkbox"></td><td>2</td></tr>
-      <tr><td>5</td><td>Papeleta de votación</td><td><input type="checkbox"></td><td>1</td></tr>
-      <tr><td>6</td><td>Notarización (si aplica)</td><td><input type="checkbox"></td><td>2</td></tr>
-    </tbody>
-  </table>
+<body class="bg-gray-100 p-6">
 
-  <button onclick="cerrarSesion()">Cerrar sesión</button>
-  <script src="js/index.js"></script>
+
+
+  <!-- CONTENEDOR FLEX CON GRUPO PARA HOVER -->
+  <div class="flex group">
+
+    <!-- BARRA LATERAL -->
+    <aside class="fixed top-0 left-0 h-screen bg-white shadow-md w-16 group-hover:w-64 transition-all duration-300 z-10 overflow-hidden">
+      <div class="p-4">
+        <nav class="mt-6">
+          <ul class="space-y-4">
+            <li>
+              <a href="home.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+                <i class="fas fa-building"></i>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="registroP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+                <i class="fas fa-sign-in-alt"></i>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Registro</span>
+              </a>
+            </li>
+            <li>
+              <a href="estadoP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+                <i class="fas fa-home"></i>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Estado</span>
+              </a>
+            </li>
+            <li>
+              <a href="documentos.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+                <i class="fas fa-file-alt"></i>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Documentos</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="ml-16 group-hover:ml-64 transition-all duration-300 w-full min-h-screen overflow-y-auto">
+
+      <!-- BARRA SUPERIOR -->
+      <section style="background-color: #156091;" class="text-white px-6 py-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+        <img src="img/logo.png" alt="Logo Inmmokraft" class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover" />
+        <div><h2 class="text-2xl font-bold">Consorcio Inmmokraft<br class="sm:hidden"> Cia. Ltda.</h2></div>
+      </section>
+        <h1 class="text-2xl font-bold mb-6 text-center">Verificación de Proceso de Propiedad</h1>
+
+      <!-- FORMULARIO DE BÚSQUEDA -->
+      <div class="max-w-md mx-auto my-6">
+        <label class="block mb-2 font-semibold">Código de Propiedad:</label>
+        <input id="codigoInput" type="text" placeholder="Ej: PROP-003" class="w-full border rounded px-3 py-2" />
+        <button onclick="buscarPropiedad()" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">
+          Buscar
+        </button>
+      </div>
+
+      <!-- RESULTADOS -->
+      <div id="resultado" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow hidden">
+        <h2 class="text-xl font-bold mb-4">Resultado:</h2>
+        <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+        <p><strong>Tipo de operación:</strong> <span id="tipo"></span></p>
+        <p><strong>Estado:</strong> <span id="estado"></span></p>
+
+        <h3 class="mt-6 mb-2 font-semibold">Documentos:</h3>
+        <ul class="list-disc pl-6 text-sm">
+          <li>Escritura: <span id="doc_escritura"></span></li>
+          <li>Certificado de gravámenes: <span id="doc_gravamenes"></span></li>
+          <li>Pago de impuestos: <span id="doc_impuestos"></span></li>
+          <li>Ficha catastral: <span id="doc_catastral"></span></li>
+          <li>Papeleta de votación: <span id="doc_papeleta"></span></li>
+          <li>Notarización: <span id="doc_notarizacion"></span></li>
+        </ul>
+
+        <div id="veredicto" class="mt-6 font-bold text-lg text-center"></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function buscarPropiedad() {
+      const codigo = document.getElementById("codigoInput").value.trim().toUpperCase();
+      if (!codigo) return alert("Por favor ingresa un código válido.");
+
+      fetch(`http://localhost:3000/api/propiedades/${codigo}`)
+        .then(res => {
+          if (!res.ok) throw new Error("No se encontró la propiedad");
+          return res.json();
+        })
+        .then(data => {
+          document.getElementById("resultado").classList.remove("hidden");
+
+          document.getElementById("direccion").textContent = data.direccion;
+          document.getElementById("tipo").textContent = data.tipo_operacion;
+          document.getElementById("estado").textContent = data.estado;
+
+          mostrarDocumento("doc_escritura", data.escritura);
+          mostrarDocumento("doc_gravamenes", data.gravamenes);
+          mostrarDocumento("doc_impuestos", data.impuestos);
+          mostrarDocumento("doc_catastral", data.catastral);
+          mostrarDocumento("doc_papeleta", data.papeleta);
+          mostrarDocumento("doc_notarizacion", data.notarizacion);
+
+          const cumpleTodo = data.escritura && data.gravamenes && data.impuestos &&
+                             data.catastral && data.papeleta && data.notarizacion;
+
+          const veredicto = document.getElementById("veredicto");
+          if (cumpleTodo) {
+            veredicto.textContent = "✅ Esta propiedad está lista para ser vendida o alquilada.";
+            veredicto.classList.remove("text-red-600");
+            veredicto.classList.add("text-green-600");
+          } else {
+            veredicto.textContent = "⚠️ Faltan documentos. No se puede continuar con la operación.";
+            veredicto.classList.remove("text-green-600");
+            veredicto.classList.add("text-red-600");
+          }
+        })
+        .catch(err => {
+          alert("⚠️ No se encontró la propiedad o hubo un error.");
+          document.getElementById("resultado").classList.add("hidden");
+        });
+    }
+
+    function mostrarDocumento(id, valor) {
+      document.getElementById(id).textContent = valor ? "✅ Completado" : "❌ Pendiente";
+    }
+  </script>
 </body>
 </html>

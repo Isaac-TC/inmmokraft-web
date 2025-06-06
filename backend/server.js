@@ -33,7 +33,15 @@ app.use("/api", authRoutes);
 
 // Ruta para registrar propiedad
 app.post("/api/registrar", (req, res) => {
-  const { tipoOperacion, direccion, vendedor, comprador, agente, estado } = req.body;
+  const { tipoOperacion, direccion, vendedor, comprador, agente, estado, documentos } = req.body;
+  const {
+    escritura = false,
+    gravamenes = false,
+    impuestos = false,
+    catastral = false,
+    papeleta = false,
+    notarizacion = false
+  } = documentos;
 
   // Buscar el último código que tenga el formato "PROP-xxx"
   const sqlUltimo = "SELECT codigo FROM propiedades WHERE codigo LIKE 'PROP-%' ORDER BY id DESC LIMIT 1";
@@ -53,10 +61,27 @@ app.post("/api/registrar", (req, res) => {
     }
 
     const sqlInsert = `
-      INSERT INTO propiedades (codigo, tipo_operacion, direccion, vendedor, comprador, agente, estado)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO propiedades (
+        codigo, tipo_operacion, direccion, vendedor, comprador, agente, estado,
+        escritura, gravamenes, impuestos, catastral, papeleta, notarizacion
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    const values = [nuevoCodigo, tipoOperacion, direccion, vendedor, comprador, agente, estado];
+
+    const values = [
+      nuevoCodigo,
+      tipoOperacion,
+      direccion,
+      vendedor,
+      comprador,
+      agente,
+      estado,
+      escritura,
+      gravamenes,
+      impuestos,
+      catastral,
+      papeleta,
+      notarizacion
+    ];
 
     db.query(sqlInsert, values, (err, result) => {
       if (err) {
