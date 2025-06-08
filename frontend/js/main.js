@@ -17,7 +17,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
 
     if (data.success) {
       // Redirige a la pagina que seleccionemos 
-      window.location.href = "registroP.html";
+      window.location.href = "RegistroP.html";
     } else {
       alert("Usuario o contraseña incorrectos.");
     }

@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registrar Propiedad - Inmobiliaria Inmmokraft</title>
+  <title>Registro  Propiedades</title>
   <link rel="icon" type="image/png" href="img/logo.png">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/stylesFormulario.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    html, body {
-      height: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="css/registro.css" />
+
+  
 </head>
 
-<body class="bg-gray-100 h-full">
-  <div class="group flex w-full min-h-screen">
+<script>
+  if (localStorage.getItem("usuarioLogueado") !== "true") {
+    window.location.href = "Home.html";
+  }
+</script>
 
-    <!-- BARRA LATERAL COLAPSABLE -->
-    <aside class="fixed top-0 left-0 h-screen bg-white shadow-md w-16 group-hover:w-64 transition-all duration-300 z-10 overflow-hidden">
+<body class="h-full">
+  <div class="group flex w-full min-h-screen">
+    <!-- BARRA LATERAL -->
+    <aside
+      class="fixed top-0 left-0 h-screen bg-white shadow-md w-16 group-hover:w-64 transition-all duration-300 z-10 overflow-hidden">
       <div class="p-4">
         <nav class="mt-6">
           <ul class="space-y-4">
             <li>
-              <a href="home.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+              <a href="Home.html" onclick="cerrarSesion()"
+                class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+
                 <i class="fas fa-building"></i>
                 <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Home</span>
               </a>
             </li>
             <li>
-              <a href="registroP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+              <a href="RegistroP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
                 <i class="fas fa-sign-in-alt"></i>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Registro</span>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Registro de Propiedades</span>
               </a>
             </li>
             <li>
-              <a href="estadoP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+              <a href="PropiedadesR.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
                 <i class="fas fa-home"></i>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Estado</span>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Propiedades registradas</span>
               </a>
             </li>
             <li>
-              <a href="documentos.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
+              <a href="ProcesoP.html" class="flex items-center space-x-3 text-gray-700 hover:text-blue-700">
                 <i class="fas fa-file-alt"></i>
-                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Documentos</span>
+                <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Proceso de propiedad</span>
               </a>
             </li>
           </ul>
@@ -53,27 +60,32 @@
       </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- CONTENIDO -->
     <main class="ml-16 group-hover:ml-64 transition-all duration-300 w-full min-h-screen overflow-y-auto">
-      <!-- BARRA SUPERIOR -->
-      <section style="background-color: #156091;" class="text-white px-6 py-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
-        <img src="img/logo.png" alt="Logo Inmmokraft" class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover" />
-        <div><h2 class="text-2xl font-bold">Consorcio Inmmokraft<br class="sm:hidden"> Cia. Ltda.</h2></div>
+      <!-- ENCABEZADO -->
+      <section style="background-color: #156091;"
+        class="text-white px-6 py-4 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+        <img src="img/logo.png" alt="Logo Inmmokraft"
+          class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover" />
+        <div>
+          <h2 class="text-2xl font-bold">Consorcio Inmmokraft<br class="sm:hidden"> Cia. Ltda.</h2>
+        </div>
       </section>
 
-      <!-- FORMULARIO DE REGISTRO -->
+      <!-- FORMULARIO -->
       <section class="p-6">
         <div class="bg-white rounded-lg shadow-md p-6 max-w-4xl mx-auto">
           <h2 class="titulo-formulario">Registrar Nueva Propiedad</h2>
 
           <form id="formulario" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label for="tipoOperacion">Tipo de Operación</label>
-              <select id="tipoOperacion" required>
+              <label for="tipoOperacion">Condición del Inmueble</label>
+              <select id="tipoOperacion" name="tipoOperacion" required>
                 <option value="">Seleccionar</option>
                 <option value="Venta">Venta</option>
                 <option value="Alquiler">Alquiler</option>
               </select>
+
             </div>
 
             <div class="md:col-span-2">
@@ -82,12 +94,12 @@
             </div>
 
             <div>
-              <label for="vendedor">Cliente Vendedor</label>
+              <label for="vendedor">Nombre Vendedor</label>
               <input type="text" id="vendedor" required>
             </div>
 
             <div>
-              <label for="comprador">Cliente Comprador</label>
+              <label for="comprador">Nombre Comprador</label>
               <input type="text" id="comprador">
             </div>
 
@@ -97,7 +109,7 @@
             </div>
 
             <div>
-              <label for="estado">Estado del Proceso</label>
+              <label for="estado">Estado del Proceso Documentos</label>
               <select id="estado">
                 <option value="">Seleccionar</option>
                 <option value="Pendiente">Pendiente</option>
@@ -108,53 +120,19 @@
 
             <!-- DOCUMENTOS -->
             <div class="md:col-span-2">
-              <h3 class="text-lg font-semibold mt-4 mb-2">Documentación</h3>
+              <h3 class="text-lg font-semibold mt-4 mb-2 text-blue-900">Documentación Requerida</h3>
               <table class="w-full text-left border border-gray-300 text-sm">
-                <thead class="bg-gray-200">
+                <thead class="bg-blue-100">
                   <tr>
                     <th class="border px-2 py-1">#</th>
                     <th class="border px-2 py-1">Documento</th>
+                    <th class="border px-2 py-1">Archivo</th>
                     <th class="border px-2 py-1">Completado</th>
                     <th class="border px-2 py-1">Días Estimados</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td class="border px-2">1</td>
-                    <td class="border px-2">Escritura</td>
-                    <td class="border px-2 text-center"><input type="checkbox" id="doc_escritura"></td>
-                    <td class="border px-2">3</td>
-                  </tr>
-                  <tr>
-                    <td class="border px-2">2</td>
-                    <td class="border px-2">Certificado de gravámenes</td>
-                    <td class="border px-2 text-center"><input type="checkbox" id="doc_gravamenes"></td>
-                    <td class="border px-2">2</td>
-                  </tr>
-                  <tr>
-                    <td class="border px-2">3</td>
-                    <td class="border px-2">Pago de impuestos</td>
-                    <td class="border px-2 text-center"><input type="checkbox" id="doc_impuestos"></td>
-                    <td class="border px-2">1</td>
-                  </tr>
-                  <tr>
-                    <td class="border px-2">4</td>
-                    <td class="border px-2">Ficha catastral</td>
-                    <td class="border px-2 text-center"><input type="checkbox" id="doc_catastral"></td>
-                    <td class="border px-2">2</td>
-                  </tr>
-                  <tr>
-                    <td class="border px-2">5</td>
-                    <td class="border px-2">Papeleta de votación</td>
-                    <td class="border px-2 text-center"><input type="checkbox" id="doc_papeleta"></td>
-                    <td class="border px-2">1</td>
-                  </tr>
-                  <tr>
-                    <td class="border px-2">6</td>
-                    <td class="border px-2">Notarización (si aplica)</td>
-                    <td class="border px-2 text-center"><input type="checkbox" id="doc_notarizacion"></td>
-                    <td class="border px-2">2</td>
-                  </tr>
+                <tbody id="tabla-documentos">
+                  <!-- Filas generadas dinámicamente -->
                 </tbody>
               </table>
             </div>
@@ -164,8 +142,8 @@
             </div>
           </form>
 
-          <!-- PIE DE PÁGINA -->
-          <footer id="contacto" class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
+          <!-- PIE -->
+          <footer class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
             <p class="text-gray-600">© 2025 Inmobiliaria Inmmokraft.cia.ltda. Todos los derechos reservados.</p>
           </footer>
         </div>
@@ -173,36 +151,18 @@
     </main>
   </div>
 
+  
   <script>
-    document.querySelector("form").addEventListener("submit", function(e) {
-      e.preventDefault();
+    
 
-      const datos = {
-        tipoOperacion: document.getElementById("tipoOperacion").value,
-        direccion: document.getElementById("direccion").value,
-        vendedor: document.getElementById("vendedor").value,
-        comprador: document.getElementById("comprador").value,
-        agente: document.getElementById("agente").value,
-        estado: document.getElementById("estado").value,
-        documentos: {
-          escritura: document.getElementById("doc_escritura").checked,
-          gravamenes: document.getElementById("doc_gravamenes").checked,
-          impuestos: document.getElementById("doc_impuestos").checked,
-          catastral: document.getElementById("doc_catastral").checked,
-          papeleta: document.getElementById("doc_papeleta").checked,
-          notarizacion: document.getElementById("doc_notarizacion").checked
-        }
-      };
-
-      fetch("http://localhost:3000/api/registrar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos)
-      })
-      .then(res => res.text())
-      .then(msg => alert(msg))
-      .catch(err => alert("Error al registrar"));
-    });
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "Home.html";
+    }
   </script>
+  <script src="js/registro.js"></script>
+
+
 </body>
+
 </html>

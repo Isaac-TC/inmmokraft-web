@@ -33,7 +33,9 @@ app.use("/api", authRoutes);
 
 // Ruta para registrar propiedad
 app.post("/api/registrar", (req, res) => {
-  const { tipoOperacion, direccion, vendedor, comprador, agente, estado, documentos } = req.body;
+  const { tipo_operacion, direccion, vendedor, comprador, agente, estado, documentos } = req.body;
+    console.log("📩 Datos del formulario recibidos:", req.body);
+
   const {
     escritura = false,
     gravamenes = false,
@@ -43,7 +45,6 @@ app.post("/api/registrar", (req, res) => {
     notarizacion = false
   } = documentos;
 
-  // Buscar el último código que tenga el formato "PROP-xxx"
   const sqlUltimo = "SELECT codigo FROM propiedades WHERE codigo LIKE 'PROP-%' ORDER BY id DESC LIMIT 1";
 
   db.query(sqlUltimo, (err, results) => {
@@ -69,7 +70,7 @@ app.post("/api/registrar", (req, res) => {
 
     const values = [
       nuevoCodigo,
-      tipoOperacion,
+      tipo_operacion,
       direccion,
       vendedor,
       comprador,
@@ -93,8 +94,6 @@ app.post("/api/registrar", (req, res) => {
     });
   });
 });
-
-
 
 // Obtener todas las propiedades
 app.get("/api/propiedades", (req, res) => {
@@ -125,7 +124,7 @@ app.get("/api/propiedades/:codigo", (req, res) => {
 // Actualizar una propiedad
 app.put("/api/propiedades/:codigo", (req, res) => {
   const codigo = req.params.codigo;
-  const { tipoOperacion, direccion, vendedor, comprador, agente, estado } = req.body;
+  const { tipo_operacion, direccion, vendedor, comprador, agente, estado } = req.body;
 
   const sql = `
     UPDATE propiedades SET
@@ -138,7 +137,7 @@ app.put("/api/propiedades/:codigo", (req, res) => {
     WHERE codigo = ?
   `;
 
-  const values = [tipoOperacion, direccion, vendedor, comprador, agente, estado, codigo];
+  const values = [tipo_operacion, direccion, vendedor, comprador, agente, estado, codigo];
 
   db.query(sql, values, (err, result) => {
     if (err) {
@@ -160,7 +159,6 @@ app.delete("/api/propiedades/:codigo", (req, res) => {
     res.send("🗑️ Propiedad eliminada correctamente");
   });
 });
-
 
 // Ruta raíz de prueba
 app.get("/", (req, res) => {
