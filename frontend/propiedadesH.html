@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Propiedades</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+ <!-- BARRA SUPERIOR -->
+  <header class="bg-[#156091] shadow-md py-4 px-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <img src="img/logo.png" alt="Logo Inmmokraft" class="w-12 h-12 rounded-full object-cover border border-white">
+      <div>
+        <h1 class="text-xl font-bold text-white">Consorcio Inmmokraft Cia. Ltda.</h1>
+        <p class="text-sm text-white">Tu espacio ideal, a tu alcance</p>
+      </div>
+    </div>
+    <nav class="space-x-6 text-white font-semibold">
+       <a href="Home.html" class="hover:underline">Inicio</a>
+      <a href="propiedadesH.html" class="hover:underline">Propiedades</a>
+      <a href="contactos.html" class="hover:underline">Encuentranos</a>
+      <a href="Login.html" class="hover:underline">Iniciar sesión</a>
+    </nav>
+  </header>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">Propiedades</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Propiedad 1 -->
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-xl font-semibold mb-2">Casa en el Norte</h2>
+        <img src="img/home-2486092_640.jpg" alt="Casa 1" class="w-full h-48 object-cover rounded mb-3">
+        <video controls class="w-full rounded">
+          <source src="videos/casa1.mp4" type="video/mp4">
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+
+      <!-- Propiedad 2 -->
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-xl font-semibold mb-2">Departamento en el Centro</h2>
+        <img src="img/generated-7638594_640.jpg" alt="Departamento" class="w-full h-48 object-cover rounded mb-3">
+        <video controls class="w-full rounded">
+          <source src="videos/departamento1.mp4" type="video/mp4">
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+
+      <!-- Propiedad 3 -->
+      <div class="bg-white rounded-lg shadow p-4">
+        <h2 class="text-xl font-semibold mb-2">Casa de Campo</h2>
+        <img src="img/holiday-house-177401_640.jpg" alt="Casa de Campo" class="w-full h-48 object-cover rounded mb-3">
+        <video controls class="w-full rounded">
+          <source src="videos/casa2.mp4" type="video/mp4">
+          Tu navegador no soporta el video.
+        </video>
+      </div>
+    </div>
+  </div>
+   <footer id="contacto" class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
+      <p class="text-gray-600">© 2025 Inmobiliaria Inmmokraft.cia.ltda. Todos los derechos reservados.</p>
+      <div class="mt-2 space-x-3 text-xl">
+        <a href="https://facebook.com" class="text-blue-600 hover:text-blue-800"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP  -->
+   <a href="https://wa.me/593980006242"
+   class="fixed bottom-5 right-5 hover:bg-green-600 w-14 h-14 flex items-center justify-center rounded-full shadow-lg z-50"
+   target="_blank" aria-label="WhatsApp">
+  <img src="img/whatsapp_2504957.png" alt="WhatsApp" class="w-8 h-8">
+</a>
+</body>
+</html>
