@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seguimiento de Fase 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Sidebar -->
+  <div class="flex min-h-screen">
+    <aside class="w-16 hover:w-64 bg-white shadow-md transition-all duration-300 overflow-hidden">
+      <div class="p-4">
+        <nav class="space-y-4 mt-6">
+          <a href="Home.html" onclick="cerrarSesion()" class="flex items-center space-x-3 hover:text-blue-700">
+            <i class="fas fa-building"></i>
+            <span class="opacity-0 hover:opacity-100 transition-opacity duration-300">Home</span>
+          </a>
+          <a href="Fase1.html" class="flex items-center space-x-3 hover:text-blue-700">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="opacity-0 hover:opacity-100 transition-opacity duration-300">Fase1</span>
+          </a>
+          <a href="RegistroP.html" class="flex items-center space-x-3 hover:text-blue-700">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="opacity-0 hover:opacity-100 transition-opacity duration-300">Registro Propiedades</span>
+          </a>
+          <a href="PropiedadesR.html" class="flex items-center space-x-3 hover:text-blue-700">
+            <i class="fas fa-home"></i>
+            <span class="opacity-0 hover:opacity-100 transition-opacity duration-300">Propiedades registradas</span>
+          </a>
+          <a href="ProcesoP.html" class="flex items-center space-x-3 hover:text-blue-700">
+            <i class="fas fa-file-alt"></i>
+            <span class="opacity-0 hover:opacity-100 transition-opacity duration-300">Proceso de propiedad</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <!-- Header -->
+      <section class="bg-blue-800 text-white p-4 rounded-md shadow mb-6 flex items-center gap-4">
+        <img src="img/logo.png" alt="Logo Inmmokraft" class="w-16 h-16 rounded-full border-4 border-white shadow" />
+        <div>
+          <h2 class="text-2xl font-bold">Consorcio Inmmokraft <span class="block text-sm">Cia. Ltda.</span></h2>
+        </div>
+      </section>
+
+      <!-- Formulario de Asesor y Contacto -->
+      <div class="bg-white p-6 rounded-md shadow mb-6">
+        <h3 class="text-xl font-semibold mb-4">Información General</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="asesor" class="block text-sm font-medium text-gray-700">Asesor responsable:</label>
+            <input type="text" id="asesor" placeholder="Nombre del asesor"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+          </div>
+          <div>
+            <label for="contacto" class="block text-sm font-medium text-gray-700">Forma de contacto:</label>
+            <select id="contacto"
+              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+              <option value="">Selecciona una opción</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Llamada">Llamada</option>
+              <option value="Correo">Correo</option>
+              <option value="Visita">Visita</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Seguimiento -->
+      <div class="bg-white p-6 rounded-md shadow">
+        <h3 class="text-xl font-semibold mb-4">Seguimiento - Fase 1</h3>
+        <div class="overflow-x-auto">
+          <table id="tablaSeguimiento" class="min-w-full table-auto border border-gray-300">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-4 py-2 border">Seguimiento</th>
+                <th class="px-4 py-2 border">¿Realizado?</th>
+                <th class="px-4 py-2 border">Fecha Solicitud</th>
+                <th class="px-4 py-2 border">Días</th>
+                <th class="px-4 py-2 border">Fecha Plazo</th>
+                <th class="px-4 py-2 border">Alerta</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td class="border px-4 py-2">Acercamiento con el cliente</td>
+                <td class="border"><input type="checkbox" class="check" /></td>
+                <td class="border"><input type="date" class="fecha-solicitud" /></td>
+                <td class="border"><input type="number" class="dias w-16 text-center" min="1" value="1" /></td>
+                <td class="border fecha-plazo">-</td>
+                <td class="border alerta">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Acercamiento Propiedad</td>
+                <td class="border"><input type="checkbox" class="check" /></td>
+                <td class="border"><input type="date" class="fecha-solicitud" /></td>
+                <td class="border"><input type="number" class="dias w-16 text-center" min="1" value="1" /></td>
+                <td class="border fecha-plazo">-</td>
+                <td class="border alerta">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Acercamiento al propietario</td>
+                <td class="border"><input type="checkbox" class="check" /></td>
+                <td class="border"><input type="date" class="fecha-solicitud" /></td>
+                <td class="border"><input type="number" class="dias w-16 text-center" min="1" value="1" /></td>
+                <td class="border fecha-plazo">-</td>
+                <td class="border alerta">-</td>
+              </tr>
+              <tr>
+                <td class="border px-4 py-2">Llamada telefónica</td>
+                <td class="border"><input type="checkbox" class="check" /></td>
+                <td class="border"><input type="date" class="fecha-solicitud" /></td>
+                <td class="border"><input type="number" class="dias w-16 text-center" min="1" value="1" /></td>
+                <td class="border fecha-plazo">-</td>
+                <td class="border alerta">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 flex gap-4 justify-end">
+          <button onclick="verificarSeguimiento()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow">✅ Verificar seguimiento</button>
+          <button onclick="guardarSeguimiento()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">💾 Guardar seguimiento</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/fase1.js"></script>
+</body>
+</html>

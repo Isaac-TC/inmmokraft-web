@@ -28,13 +28,17 @@ db.connect((err) => {
   console.log("✅ Conectado a la base de datos");
 });
 
-// Rutas de autenticación
+// Rutas
 app.use("/api", authRoutes);
+
+// Rutas de seguimiento
+const seguimientoRoutes = require("./routes/seguimientoRoutes")(db);
+app.use("/api/seguimiento", seguimientoRoutes);
 
 // Ruta para registrar propiedad
 app.post("/api/registrar", (req, res) => {
   const { tipo_operacion, direccion, vendedor, comprador, agente, estado, documentos } = req.body;
-    console.log("📩 Datos del formulario recibidos:", req.body);
+  console.log("📩 Datos del formulario recibidos:", req.body);
 
   const {
     escritura = false,
@@ -160,7 +164,7 @@ app.delete("/api/propiedades/:codigo", (req, res) => {
   });
 });
 
-// Ruta raíz de prueba
+// Ruta raíz
 app.get("/", (req, res) => {
   res.send("Servidor backend funcionando correctamente 🎉");
 });

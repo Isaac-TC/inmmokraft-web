@@ -1,0 +1,69 @@
+#tablaSeguimiento {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#tablaSeguimiento thead {
+  background-color: #156091;
+  color: white;
+}
+
+#tablaSeguimiento th, #tablaSeguimiento td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#tablaSeguimiento tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#tablaSeguimiento tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+#tablaSeguimiento input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+#tablaSeguimiento input[type="date"],
+#tablaSeguimiento input[type="number"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 100%;
+}
+
+#tablaSeguimiento .alerta {
+  font-weight: bold;
+  color: red;
+}
+
+/* Estilos para la sección de asesor */
+div label,
+div select,
+div input[type="text"] {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+div input[type="text"],
+div select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 5px;
+}
+
+#tablaSeguimiento input.dias {
+  width: 60px;
+  padding: 4px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+}
