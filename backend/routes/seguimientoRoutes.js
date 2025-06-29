@@ -1,23 +1,36 @@
 module.exports = (db) => {
   const express = require("express");
   const router = express.Router();
-  const enviarCorreo = require("../utils/notificador"); // 👈 Importa el notificador
+  const enviarCorreo = require("../utils/notificador"); // 👈 Notificador de correo
 
   router.post("/", async (req, res) => {
-    const { tarea, realizado, fechaSolicitud, dias, fechaPlazo, alerta } = req.body;
+    const {
+      tarea,
+      realizado,
+      fechaSolicitud,
+      dias,
+      fechaPlazo,
+      alerta,
+      asesor,         // 👈 Nuevo campo
+      contacto        // 👈 Nuevo campo
+    } = req.body;
 
-    // Validación básica de fecha
-    if (!fechaSolicitud || !fechaPlazo || isNaN(Date.parse(fechaSolicitud)) || isNaN(Date.parse(fechaPlazo))) {
-      return res.status(400).json({ error: "❌ Fechas inválidas. Verifica antes de guardar." });
+    // Validación básica
+    if (
+      !fechaSolicitud || !fechaPlazo ||
+      isNaN(Date.parse(fechaSolicitud)) || isNaN(Date.parse(fechaPlazo)) ||
+      !asesor || !contacto
+    ) {
+      return res.status(400).json({ error: "❌ Datos inválidos. Verifica antes de guardar." });
     }
 
     const sql = `
       INSERT INTO seguimientos 
-      (tarea, realizado, fechaSolicitud, dias, fechaPlazo, alerta)
-      VALUES (?, ?, ?, ?, ?, ?)
+      (tarea, realizado, fechaSolicitud, dias, fechaPlazo, alerta, asesor, contacto)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    const values = [tarea, realizado, fechaSolicitud, dias, fechaPlazo, alerta];
+    const values = [tarea, realizado, fechaSolicitud, dias, fechaPlazo, alerta, asesor, contacto];
 
     db.query(sql, values, async (err, result) => {
       if (err) {
@@ -25,15 +38,14 @@ module.exports = (db) => {
         return res.status(500).json({ error: "Error al guardar" });
       }
 
-      // ✅ Enviar correo si es alerta crítica
       if (alerta.includes("Atrasado") || alerta.includes("Pendiente")) {
         try {
           await enviarCorreo(
-            "iseduardot92@ejemplo.com", // 💌 Tu correo aquí
+            "iseduardot92@ejemplo.com",
             `⚠️ Seguimiento: ${tarea} - ${alerta}`,
-            `La tarea "${tarea}" está marcada como "${alerta}". Revisa la plataforma para tomar acción.`
+            `La tarea "${tarea}" está marcada como "${alerta}". Revisa la plataforma para tomar acción.\n\nAsesor: ${asesor}\nContacto: ${contacto}`
           );
-          console.log(`📧 Correo enviado para alerta: ${alerta}`);
+          console.log(`📧 Correo enviado para ${tarea}`);
         } catch (e) {
           console.error("❌ Error al enviar correo:", e);
         }

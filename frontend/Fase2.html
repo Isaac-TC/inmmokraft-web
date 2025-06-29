@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fase 2 - Solicitud de Documentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="h-full">
+  <div class="group flex w-full min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-16 group-hover:w-64 bg-white shadow-md transition-all duration-300 overflow-hidden">
+      <div class="p-4">
+        <nav class="space-y-4 mt-6 text-gray-800 text-sm font-medium">
+          <a href="Home.html" onclick="cerrarSesion()" class="flex items-center gap-3 hover:text-blue-700">
+            <i class="fas fa-building"></i>
+            <span class="group-hover:inline hidden">Home</span>
+          </a>
+          <a href="Fase1.html" class="flex items-center gap-3 hover:text-blue-700">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="group-hover:inline hidden">Fase1</span>
+          </a>
+          <a href="Fase2.html" class="flex items-center gap-3 hover:text-blue-700">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="group-hover:inline hidden">Fase2</span>
+          </a>
+          <a href="RegistroP.html" class="flex items-center gap-3 hover:text-blue-700">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="group-hover:inline hidden">Registro Propiedades</span>
+          </a>
+          <a href="PropiedadesR.html" class="flex items-center gap-3 hover:text-blue-700">
+            <i class="fas fa-home"></i>
+            <span class="group-hover:inline hidden">Propiedades registradas</span>
+          </a>
+          <a href="ProcesoP.html" class="flex items-center gap-3 hover:text-blue-700">
+            <i class="fas fa-file-alt"></i>
+            <span class="group-hover:inline hidden">Proceso de propiedad</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <!-- Header -->
+      <section class="bg-blue-800 text-white p-4 rounded-md shadow mb-6 flex items-center gap-4">
+        <img src="img/logo.png" alt="Logo Inmmokraft" class="w-16 h-16 rounded-full border-4 border-white shadow" />
+        <div>
+          <h2 class="text-2xl font-bold">Consorcio Inmmokraft <span class="block text-sm">Cia. Ltda.</span></h2>
+        </div>
+      </section>
+
+      <!-- Fase 2 - Solicitud de Documentos -->
+      <section class="p-6 bg-gray-100 rounded-lg shadow-md mt-6 mx-4">
+        <h2 class="text-xl font-bold mb-4">Fase 2 - Solicitud de Documentos</h2>
+
+        <table class="min-w-full table-auto border border-gray-300 bg-white rounded-lg overflow-hidden">
+          <thead class="bg-blue-100 text-gray-700">
+            <tr>
+              <th class="px-4 py-2 border">Documento</th>
+              <th class="px-4 py-2 border">Responsable</th>
+              <th class="px-4 py-2 border">Fecha de Entrega</th>
+              <th class="px-4 py-2 border">Formato de Entrega</th>
+              <th class="px-4 py-2 border">¿Realizado?</th>
+              <th class="px-4 py-2 border">Observaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-4 py-2 border">Cédula</td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input type="date" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input type="text" placeholder="fisico, correo, etc." class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border">
+                <select class="w-full p-1 border rounded">
+                  <option value="Sí">Sí</option>
+                  <option value="No">No</option>
+                </select>
+              </td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+            </tr>
+
+            <tr>
+              <td class="px-4 py-2 border">Papeleta de votación</td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input type="date" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border">
+                <select class="w-full p-1 border rounded">
+                  <option value="Sí">Sí</option>
+                  <option value="No">No</option>
+                </select>
+              </td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+            </tr>
+
+            <tr>
+              <td class="px-4 py-2 border">Certificado de gravamen</td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input type="date" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border">
+                <select class="w-full p-1 border rounded">
+                  <option value="Sí">Sí</option>
+                  <option value="No">No</option>
+                </select>
+              </td>
+              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="mt-4 flex gap-4">
+          <button onclick="verificarFase2()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✅ Verificar</button>
+          <button onclick="guardarFase2()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">💾 Guardar</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioLogueado");
+      window.location.href = "Home.html";
+    }
+  </script>
+</body>
+</html>

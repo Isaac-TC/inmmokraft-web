@@ -3,7 +3,7 @@ let verificado = false;
 function verificarSeguimiento() {
   const filas = document.querySelectorAll("#tablaSeguimiento tbody tr");
   const hoy = new Date();
-  hoy.setHours(0, 0, 0, 0); // 🔄 Normaliza la fecha actual
+  hoy.setHours(0, 0, 0, 0);
 
   filas.forEach(fila => {
     const check = fila.querySelector(".check").checked;
@@ -43,6 +43,9 @@ function verificarSeguimiento() {
 }
 
 function guardarSeguimiento() {
+  const asesor = document.getElementById("asesor").value.trim();
+  const contacto = document.getElementById("contacto").value;
+
   if (!verificado) {
     alert("⚠️ Primero debes hacer clic en 'Verificar seguimiento'");
     return;
@@ -59,13 +62,7 @@ function guardarSeguimiento() {
     const fechaPlazo = fila.querySelector(".fecha-plazo").textContent;
     const alerta = fila.querySelector(".alerta").textContent;
 
-    if (
-      !fechaSolicitud ||
-      isNaN(dias) ||
-      fechaPlazo === "-" ||
-      alerta === "-" ||
-      alerta.includes("incompleto")
-    ) {
+    if (!fechaSolicitud || isNaN(dias) || fechaPlazo === "-" || alerta === "-" || alerta.includes("incompleto")) {
       console.warn(`⛔ Fila "${tarea}" incompleta o no verificada. No se guarda.`);
       return;
     }
@@ -76,7 +73,9 @@ function guardarSeguimiento() {
       fechaSolicitud,
       dias,
       fechaPlazo,
-      alerta
+      alerta,
+      asesor,
+      contacto
     };
 
     const promesa = fetch("http://localhost:3000/api/seguimiento", {
