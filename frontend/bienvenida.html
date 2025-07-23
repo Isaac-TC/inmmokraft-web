@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro  Propiedades</title>
+  <title>Registro Propiedades</title>
   <link rel="icon" type="image/png" href="img/logo.png">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -79,92 +79,18 @@
         </div>
       </section>
 
-      <!-- FORMULARIO -->
-      <section class="p-6">
-        <div class="bg-white rounded-lg shadow-md p-6 max-w-4xl mx-auto">
-          <h2 class="titulo-formulario">Registrar Nueva Propiedad</h2>
-
-          <form id="formulario" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="tipoOperacion">Condición del Inmueble</label>
-              <select id="tipoOperacion" name="tipoOperacion" required>
-                <option value="">Seleccionar</option>
-                <option value="Venta">Venta</option>
-                <option value="Alquiler">Alquiler</option>
-              </select>
-            </div>
-
-            <div class="md:col-span-2">
-              <label for="direccion">Dirección</label>
-              <input type="text" id="direccion" placeholder="Ej: Av. Siempre Viva 742" required>
-            </div>
-
-            <div>
-              <label for="vendedor">Nombre Vendedor</label>
-              <input type="text" id="vendedor" required>
-            </div>
-
-            <div>
-              <label for="comprador">Nombre Comprador</label>
-              <input type="text" id="comprador">
-            </div>
-
-            <div>
-              <label for="agente">Agente Responsable</label>
-              <input type="text" id="agente">
-            </div>
-
-            <div>
-              <label for="estado">Estado del Proceso Documentos</label>
-              <select id="estado">
-                <option value="">Seleccionar</option>
-                <option value="Pendiente">Pendiente</option>
-                <option value="En trámite">En trámite</option>
-                <option value="Finalizado">Finalizado</option>
-              </select>
-            </div>
-
-            <!-- DOCUMENTOS -->
-            <div class="md:col-span-2">
-              <h3 class="text-lg font-semibold mt-4 mb-2 text-blue-900">Documentación Requerida</h3>
-              <table class="w-full text-left border border-gray-300 text-sm">
-                <thead class="bg-blue-100">
-                  <tr>
-                    <th class="border px-2 py-1">#</th>
-                    <th class="border px-2 py-1">Documento</th>
-                    <th class="border px-2 py-1">Archivo</th>
-                    <th class="border px-2 py-1">Completado</th>
-                    <th class="border px-2 py-1">Días Estimados</th>
-                    <th class="border px-2 py-1">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="tabla-documentos">
-                  <tr>
-                    <td class="border px-2 py-1">1</td>
-                    <td class="border px-2 py-1">Ejemplo.pdf</td>
-                    <td class="border px-2 py-1"><input type="file"></td>
-                    <td class="border px-2 py-1"><input type="checkbox"></td>
-                    <td class="border px-2 py-1"><input type="number" min="1" value="1"></td>
-                    <td class="border px-2 py-1 text-center">
-                      <button class="text-blue-600 hover:text-blue-800 mr-2"><i class="fas fa-edit"></i></button>
-                      <button class="text-red-600 hover:text-red-800"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="md:col-span-2 text-center mt-4">
-              <button type="submit">Registrar Propiedad</button>
-            </div>
-          </form>
-
-          <!-- PIE -->
-          <footer class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
-            <p class="text-gray-600">© 2025 Inmobiliaria Inmmokraft.cia.ltda. Todos los derechos reservados.</p>
-          </footer>
-        </div>
+      <!-- BIENVENIDA CON IMAGEN -->
+      <section class="flex flex-col items-center justify-center text-center py-12 bg-[#0054A6] text-white">
+        <img src="img/logo.png" alt="Logo Bienvenida"
+          class="w-80 max-w-full mb-6 drop-shadow-xl rounded-lg">
+        <h1 class="text-3xl font-semibold">¡Bienvenido al Sistema de Registro de Propiedades!</h1>
+        <p class="mt-2 text-lg">Iniciemos tu recorrido con Inmmokraft Cía. Ltda.</p>
       </section>
+
+      <!-- PIE -->
+      <footer class="bg-white text-center py-6 mt-12 shadow-inner border-t border-gray-200">
+        <p class="text-gray-600">© 2025 Inmobiliaria Inmmokraft.cia.ltda. Todos los derechos reservados.</p>
+      </footer>
     </main>
   </div>
 
@@ -176,4 +102,5 @@
   </script>
   <script src="js/registro.js"></script>
 </body>
+
 </html>

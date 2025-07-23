@@ -35,6 +35,11 @@ app.use("/api", authRoutes);
 const seguimientoRoutes = require("./routes/seguimientoRoutes")(db);
 app.use("/api/seguimiento", seguimientoRoutes);
 
+//Ruta fase 2 
+const fase2Routes = require('./routes/fase2Routes')(db);
+app.use('/api/fase2', fase2Routes);
+
+
 // Ruta para registrar propiedad
 app.post("/api/registrar", (req, res) => {
   const { tipo_operacion, direccion, vendedor, comprador, agente, estado, documentos } = req.body;

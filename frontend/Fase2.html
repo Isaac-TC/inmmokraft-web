@@ -66,23 +66,27 @@
               <th class="px-4 py-2 border">Formato de Entrega</th>
               <th class="px-4 py-2 border">¿Realizado?</th>
               <th class="px-4 py-2 border">Observaciones</th>
+              <th class="px-4 py-2 border">Acciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="px-4 py-2 border">Cédula</td>
-              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
-              <td class="px-4 py-2 border"><input type="date" class="w-full p-1 border rounded" /></td>
-              <td class="px-4 py-2 border"><input type="text" placeholder="fisico, correo, etc." class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input name="responsable1" type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input name="fecha1" type="date" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input name="formato1" type="text" class="w-full p-1 border rounded" /></td>
               <td class="px-4 py-2 border">
-                <select class="w-full p-1 border rounded">
+                <select name="realizado1" class="w-full p-1 border rounded">
                   <option value="Sí">Sí</option>
                   <option value="No">No</option>
                 </select>
               </td>
-              <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border"><input name="observaciones1" type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border text-center">
+                <button class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></button>
+                <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-trash-alt"></i></button>
+              </td>
             </tr>
-
             <tr>
               <td class="px-4 py-2 border">Papeleta de votación</td>
               <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
@@ -95,8 +99,11 @@
                 </select>
               </td>
               <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border text-center">
+                <button class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></button>
+                <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-trash-alt"></i></button>
+              </td>
             </tr>
-
             <tr>
               <td class="px-4 py-2 border">Certificado de gravamen</td>
               <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
@@ -109,13 +116,17 @@
                 </select>
               </td>
               <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" /></td>
+              <td class="px-4 py-2 border text-center">
+                <button class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></button>
+                <button class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-trash-alt"></i></button>
+              </td>
             </tr>
           </tbody>
         </table>
 
         <div class="mt-4 flex gap-4">
-          <button onclick="verificarFase2()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✅ Verificar</button>
-          <button onclick="guardarFase2()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">💾 Guardar</button>
+          <button onclick="verificarfase2()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✅ Verificar</button>
+          <button onclick="guardarfase2()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">💾 Guardar</button>
         </div>
       </section>
     </main>
@@ -127,5 +138,6 @@
       window.location.href = "Home.html";
     }
   </script>
+  <script src="js/fase2.js"></script>
 </body>
 </html>

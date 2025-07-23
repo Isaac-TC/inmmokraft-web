@@ -1,24 +1,59 @@
-document.getElementById('fase2-form').addEventListener('submit', function (e) {
-  e.preventDefault();
+// NO USES "require" AQUÍ, este archivo es para el navegador
+console.log("✅ fase2.js cargado correctamente");
 
-  const data = {
-    documento: 'Cédula',
-    responsable: document.querySelector('[name="responsable1"]').value,
-    fechaEntrega: document.querySelector('[name="fecha1"]').value,
-    formatoEntrega: document.querySelector('[name="formato1"]').value,
-    realizado: document.querySelector('[name="realizado1"]').value,
-    observaciones: document.querySelector('[name="observaciones1"]').value
-  };
+function verificarfase2() {
+  const inputs = document.querySelectorAll('tbody input, tbody select');
+  let completo = true;
 
-  console.log('Datos capturados:', data);
+  inputs.forEach(input => {
+    if (!input.value.trim()) {
+      input.style.borderColor = "red";
+      completo = false;
+    } else {
+      input.style.borderColor = "#ccc";
+    }
+  });
 
-  // Aquí puedes hacer fetch o axios para guardar en la BD
-  // fetch('/api/fase2', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-  //   .then(res => res.json())
-  //   .then(res => alert("Guardado correctamente"))
-  //   .catch(err => console.error('Error:', err));
-});
+  if (completo) {
+    alert("✅ Todos los campos están llenos.");
+  } else {
+    alert("⚠️ Faltan campos por completar.");
+  }
+}
 
-function verificarFase2() {
-  alert('Verificación aún no implementada. 😅');
+function guardarfase2() {
+  const filas = document.querySelectorAll("tbody tr");
+  const datos = [];
+
+  filas.forEach(fila => {
+    const celdas = fila.querySelectorAll("td");
+    const data = {
+  documento: celdas[0].textContent.trim(),
+  responsable: celdas[1].querySelector("input").value.trim(),
+  fecha_entrega: celdas[2].querySelector("input").value || null,
+  formato_entrega: celdas[3].querySelector("input").value.trim(),
+  realizado: celdas[4].querySelector("select").value,
+  observaciones: celdas[5].querySelector("input").value.trim()
+};
+
+    datos.push(data);
+  });
+
+  fetch("http://localhost:3000/api/fase2/guardar-fase2", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(datos)
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.success) {
+        alert("✅ Datos guardados correctamente.");
+      } else {
+        alert("❌ Error al guardar: " + res.message);
+      }
+    })
+    .catch(err => {
+      console.error("❌ Error en la solicitud:", err);
+      alert("❌ Error al conectar con el servidor.");
+    });
 }
