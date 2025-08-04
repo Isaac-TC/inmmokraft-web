@@ -2,11 +2,37 @@
   {
     "usuario": "admin",
     "clave": "1234",
-    "correo": "admin@inmmo.com"
+    "correo": "admin1@inmmo.com",
+    "rol": "admin1"
   },
   {
     "usuario": "isaac",
     "clave": "123456",
-    "correo": "iseduardot92@gmail.com"
+    "correo": "iseduardot92@gmail.com",
+    "rol": "admin"
+  },
+  {
+    "usuario": "admin2",
+    "clave": "1234",
+    "correo": "admin2@inmmo.com",
+    "rol": "admin2"
+  },
+  {
+    "usuario": "luis",
+    "correo": "luis@gmail.com",
+    "clave": "12345",
+    "rol": "usuario"
+  },
+  {
+    "usuario": "pedro",
+    "correo": "pedro@gmail.com",
+    "clave": "123",
+    "rol": "usuario"
+  },
+  {
+    "usuario": "eduardo",
+    "correo": "edu@gmail.com",
+    "clave": "1234",
+    "rol": "usuario"
   }
 ]
