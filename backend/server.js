@@ -6,6 +6,10 @@ const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 const PORT = 3000;
+const path = require("path");
+
+// Servir archivos estáticos desde la carpeta "public"
+app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware
 app.use(cors());

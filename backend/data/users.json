@@ -1,10 +1,12 @@
 [
   {
     "usuario": "admin",
-    "clave": "1234"
+    "clave": "1234",
+    "correo": "admin@inmmo.com"
   },
   {
     "usuario": "isaac",
-    "clave": "inmmokraft"
+    "clave": "123456",
+    "correo": "iseduardot92@gmail.com"
   }
 ]
