@@ -57,3 +57,32 @@ function guardarfase2() {
       alert("❌ Error al conectar con el servidor.");
     });
 }
+
+// 👇 FUNCIONALIDAD de Editar y Eliminar para Fase 2
+document.addEventListener("DOMContentLoaded", () => {
+  const tabla = document.querySelector("tbody");
+
+  tabla.addEventListener("click", (e) => {
+    const boton = e.target.closest("button");
+    if (!boton) return;
+
+    const fila = boton.closest("tr");
+
+    // 🗑 Eliminar
+    if (boton.querySelector(".fa-trash-alt")) {
+      if (confirm("¿Deseas eliminar esta fila?")) {
+        fila.remove();
+      }
+    }
+
+    // ✏️ Editar
+    if (boton.querySelector(".fa-edit")) {
+      const celdaDocumento = fila.cells[0];
+      const textoActual = celdaDocumento.textContent.trim();
+      const nuevoTexto = prompt("Editar nombre del documento:", textoActual);
+      if (nuevoTexto !== null && nuevoTexto.trim() !== "") {
+        celdaDocumento.textContent = nuevoTexto.trim();
+      }
+    }
+  });
+});

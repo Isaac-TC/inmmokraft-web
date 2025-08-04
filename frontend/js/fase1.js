@@ -78,6 +78,8 @@ function guardarSeguimiento() {
       contacto
     };
 
+    
+
     const promesa = fetch("http://localhost:3000/api/seguimiento", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -101,3 +103,32 @@ function guardarSeguimiento() {
       alert("❌ Ocurrió un error al guardar una o más filas.");
     });
 }
+
+
+// FUNCIONALIDAD DE BOTONES EDITAR Y ELIMINAR
+document.addEventListener("DOMContentLoaded", () => {
+  const tabla = document.getElementById("tablaSeguimiento");
+
+  tabla.addEventListener("click", function (e) {
+    const boton = e.target.closest("button");
+    if (!boton) return;
+
+    const fila = boton.closest("tr");
+
+    if (boton.querySelector(".fa-trash-alt")) {
+      // Botón Eliminar
+      if (confirm("¿Seguro que deseas eliminar esta fila?")) {
+        fila.remove();
+      }
+    } else if (boton.querySelector(".fa-edit")) {
+      // Botón Editar
+      const celdaTarea = fila.cells[0];
+      const textoActual = celdaTarea.textContent;
+
+      const nuevoTexto = prompt("Editar tarea:", textoActual);
+      if (nuevoTexto !== null && nuevoTexto.trim() !== "") {
+        celdaTarea.textContent = nuevoTexto.trim();
+      }
+    }
+  });
+});

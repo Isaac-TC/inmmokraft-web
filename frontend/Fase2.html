@@ -123,6 +123,15 @@
             </tr>
           </tbody>
         </table>
+              
+<!-- Agrega este botón justo debajo del título de Fase 2 -->
+<div class="flex justify-end mb-4">
+  <button onclick="agregarFilaFase2()"
+    class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded shadow"
+>
+    ➕ Agregar documento
+  </button>
+</div>
 
         <div class="mt-4 flex gap-4">
           <button onclick="verificarfase2()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✅ Verificar</button>
@@ -131,6 +140,31 @@
       </section>
     </main>
   </div>
+  <!-- Coloca este script al final, antes de cerrar </body> -->
+<script>
+  function agregarFilaFase2() {
+    const tabla = document.querySelector("table tbody");
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" placeholder="Nombre del documento" /></td>
+      <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" placeholder="Responsable" /></td>
+      <td class="px-4 py-2 border"><input type="date" class="w-full p-1 border rounded" /></td>
+      <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" placeholder="Formato de entrega" /></td>
+      <td class="px-4 py-2 border">
+        <select class="w-full p-1 border rounded">
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </td>
+      <td class="px-4 py-2 border"><input type="text" class="w-full p-1 border rounded" placeholder="Observaciones" /></td>
+      <td class="px-4 py-2 border text-center">
+        <button class="text-yellow-500 hover:text-yellow-700"><i class="fas fa-edit"></i></button>
+        <button onclick="this.closest('tr').remove()" class="text-red-500 hover:text-red-700 ml-2"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    `;
+    tabla.appendChild(fila);
+  }
+</script>
 
   <script>
     function cerrarSesion() {

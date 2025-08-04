@@ -147,6 +147,13 @@
             </tbody>
           </table>
         </div>
+        <!-- Agrega este botón justo debajo del título Seguimiento - Fase 1 -->
+<div class="flex justify-end mb-4">
+  <button onclick="agregarFila()"
+   class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded shadow">
+    ➕ Agregar seguimiento
+  </button>
+</div>
 
         <div class="mt-4 flex gap-4 justify-end">
           <button onclick="verificarSeguimiento()"
@@ -157,6 +164,26 @@
       </div>
     </main>
   </div>
+  <!-- Coloca este script al final, antes de cerrar </body> -->
+<script>
+  function agregarFila() {
+    const tabla = document.getElementById("tablaSeguimiento").getElementsByTagName('tbody')[0];
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td class="border px-4 py-2"><input type="text" class="w-full p-1 border rounded" placeholder="Nombre del seguimiento" /></td>
+      <td class="border"><input type="checkbox" class="check" /></td>
+      <td class="border"><input type="date" class="fecha-solicitud" /></td>
+      <td class="border"><input type="number" class="dias w-16 text-center" min="1" value="1" /></td>
+      <td class="border fecha-plazo">-</td>
+      <td class="border alerta">-</td>
+      <td class="border">
+        <button class="text-yellow-500 hover:text-yellow-700 mr-2"><i class="fas fa-edit"></i></button>
+        <button onclick="this.closest('tr').remove()" class="text-red-500 hover:text-red-700"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    `;
+    tabla.appendChild(fila);
+  }
+</script>
 
   <script>
     function cerrarSesion() {
